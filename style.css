@@ -93,7 +93,7 @@ img {
   color: var(--accent);
 }
 .nav {
-  display: flex;
+  display: none;
   gap: 20px;
   align-items: center;
 }

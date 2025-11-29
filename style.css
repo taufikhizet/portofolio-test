@@ -328,7 +328,15 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
   .about .grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 8px; /* Scrollbar spacing */
+  }
+  .about .grid .card {
+    min-width: 260px; /* Ensure content is readable */
+    flex: 1;
   }
 }
 @media (max-width: 680px) {

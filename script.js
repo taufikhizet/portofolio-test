@@ -13,6 +13,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Theme Toggle
+  const themeToggle = document.getElementById("themeToggle");
+  const sunIcon = document.querySelector(".sun-icon");
+  const moonIcon = document.querySelector(".moon-icon");
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+
+    if (theme === "light") {
+      sunIcon.style.display = "none";
+      moonIcon.style.display = "block";
+    } else {
+      sunIcon.style.display = "block";
+      moonIcon.style.display = "none";
+    }
+  }
+
+  // Check local storage
+  const savedTheme = localStorage.getItem("theme");
+  // Default to dark if no preference
+  if (savedTheme === "light") {
+    setTheme("light");
+  } else {
+    setTheme("dark");
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      setTheme(newTheme);
+    });
+  }
+
   // Setup parallax backgrounds from data-bg attribute
   document.querySelectorAll(".parallax").forEach((section) => {
     const src = section.dataset.bg;
